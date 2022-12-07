@@ -4,7 +4,7 @@ body {
 
 input {
   width: 500px;
-  height: 40px;
+  height: 60px;
   padding: 0 10px 0 10px;
 
   background-color: ffffff;
@@ -13,16 +13,16 @@ input {
 
 button {
   width: 500px;
-  height: 40px;
+  height: 60px;
   margin-bottom: 50px;
 
-  background-color: rgb(63, 127, 236);
+  background-color: rgb(84, 108, 244);
   border: none;
   cursor: pointer;
 }
 
 button:disabled {
-  background-color: #db4141;
+  background-color: #b3aaef;
 }
 
 button:hover,
@@ -53,10 +53,10 @@ button:focus {
 
 .value {
   font-weight: 400;
-  font-size: 40px;
-  color: white;
+  font-size: 50px;
+  color: red;
 }
 
 .label {
-  color: #cccccc;
+  color: #0a0909;
 }

@@ -13,20 +13,20 @@ const refs = {
   seconds: document.querySelector('span[data-seconds]'),
 };
 
+
 function convertMs(ms) {
-  // Number of milliseconds per unit of time
+  
   const second = 1000;
   const minute = second * 60;
   const hour = minute * 60;
   const day = hour * 24;
 
-  // Remaining days
   const days = pad(Math.floor(ms / day));
-  // Remaining hours
+  
   const hours = pad(Math.floor((ms % day) / hour));
-  // Remaining minutes
+  
   const minutes = pad(Math.floor(((ms % day) % hour) / minute));
-  // Remaining seconds
+  
   const seconds = pad(Math.floor((((ms % day) % hour) % minute) / second));
 
   return { days, hours, minutes, seconds };
@@ -69,23 +69,27 @@ class Timer {
       const currentTime = Date.now();
       const deltaTime = selectedTime - currentTime;
       const componentsTimer = convertMs(deltaTime);
-      this.updateComponentsTimer(componentsTimer);
-      if (deltaTime <= 0) {
+      /*this.updateComponentsTimer(componentsTimer);*/
+      if (deltaTime < 1000) {
         this.stopTimer();
       }
+      this.updateComponentsTimer(componentsTimer);
     }, 1000);
   }
 
+  stopTimer() {
+  clearInterval(this.timerID);
+  
+  } 
+  
+  
   updateComponentsTimer({ days, hours, minutes, seconds }) {
     refs.days.textContent = days;
     refs.hours.textContent = hours;
     refs.minutes.textContent = minutes;
     refs.seconds.textContent = seconds;
   }
-
-  stopTimer() {
-    clearInterval(this.timerID);
-  }
+  
 }
 
 const timer = new Timer();
